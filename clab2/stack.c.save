@@ -1,0 +1,83 @@
+#include<stdio.h>
+#define MAX 100
+
+int stack[MAX];
+int top=-1;
+
+void push();
+void pop();
+void show();
+
+int main()
+{
+	int choice;
+	do
+	{
+		printf("\nSTACK OPERATIONS USING ARRAY");
+		printf("\n1.Push");
+		printf("\n2.Pop");
+		printf("\n3.Show");
+		printf("\n4.Exit");
+		printf("\nEnter your choice:\n");
+		scanf("%d",&choice);
+		switch (choice)
+		{
+			case 1:
+				push();
+				break;
+			case 2:
+				pop();
+				break;
+			case 3:
+				show();
+				break;
+			case 4:
+				printf("Exiting from the program\n");
+				break;
+			default :
+				printf("Invalid choice\n");
+		}
+	}while(choice!=4 );
+	return 0;
+}
+void push()
+{
+	int item;
+	if(top==MAX-1)
+	{
+		printf("Overflow of Stack.So cannot push\n");
+		return;
+	}
+	printf("Enter the element to push:");
+	scanf("%d",&item);
+	top++;
+	stack[top]=item;
+	printf("\nElement %d pushed into the stack\n",item);
+}
+void pop()
+{
+	if(top==-1)
+	{
+		printf("Underflow of Stack because Stack is empty\n");
+		return;
+	}
+	printf("Popped element:%d\n",stack[top]);
+	top--;
+}
+void show()
+{
+	int i;
+	if(top==-1)
+	{
+		printf("Stack is empty\n");
+		return;
+	}
+	printf("Stack elements are:");
+	for (i=top;i>=0;i--)
+	{
+		{
+			printf("%d",stack[i]);
+		}
+		printf("\n");
+	}
+}
